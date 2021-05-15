@@ -20,7 +20,7 @@ int main(){
                 arr[j+1] =t;
             }
         }
-        cout<<arr[n-i-1]<<" ";
+        // cout<<arr[n-i-1]<<" ";
     }
     cout<<endl;
 
