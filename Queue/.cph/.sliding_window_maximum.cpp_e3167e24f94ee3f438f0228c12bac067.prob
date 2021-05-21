@@ -1,0 +1,1 @@
+{"name":"Local: sliding_window_maximum","url":"c:\\Users\\chint\\OneDrive\\Desktop\\Code\\Queue\\sliding_window_maximum.cpp","tests":[{"id":1621573550418,"input":"6 2\n3 4 9 1 -4 10","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\chint\\OneDrive\\Desktop\\Code\\Queue\\sliding_window_maximum.cpp","group":"local","local":true}
