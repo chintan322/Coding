@@ -12,31 +12,14 @@ struct Node {
     }
 };
 
-void preOrder(struct Node* root){
-
-    if(root==NULL) return;
-
-    cout<<root->data<<" ";
-    preOrder(root->left);
-    preOrder(root->right);
+int countNodes(Node* root) {
+    if(root==NULL) return 0;
+    return countNodes(root->left)+countNodes(root->right)+1;
 }
 
-void inOrder(struct Node* root){
-
-    if(root==NULL) return;
-
-    inOrder(root->left);
-    cout<<root->data<<" ";
-    inOrder(root->right);
-}
-
-void postOrder(struct Node* root){
-
-    if(root==NULL) return;
-
-    postOrder(root->left);
-    postOrder(root->right);
-    cout<<root->data<<" ";
+int sumNode(Node* root) {
+    if(root==NULL) return 0;
+    return sumNode(root->left)+sumNode(root->right)+root->data;
 }
 
 int main(){
@@ -55,9 +38,8 @@ int main(){
     root->right->left = new Node(6);
     root->right->right = new Node(7);
 
-    preOrder(root);cout<<endl;
-    inOrder(root);cout<<endl;
-    postOrder(root);cout<<endl;
+    cout<<sumNode(root)<<endl;
+    // cout<<countNodes(root)<<endl;
 
     return 0;
 }
