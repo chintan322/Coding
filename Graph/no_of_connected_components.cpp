@@ -50,6 +50,15 @@ int main(){
     for(auto i: components){
         cout<<i<<" ";
     }
+    cout<<endl;
+
+
+    // choose two friends from different groups code
+    long long ans = 0;
+    for(auto i: components){
+        ans += i*(n-i);
+    }
+    cout<<(ans/2);
     
 
     return 0;
