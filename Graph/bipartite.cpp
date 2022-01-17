@@ -12,30 +12,36 @@ using namespace std;
 
 const int N = 1e5+2, MOD = 1e9+7;
 
+
 vector<bool> vis;
-int n,m;
+vector<int> col;
+bool bipart;
+
 vvi adj;
 vi components;
- 
-int get_comp(int idx){
-    if(vis[idx])
-        return 0;
-    vis[idx] = true;
-    int ans = 1;
-    for(auto i: adj[idx]){
-        if(!vis[i]){
-            ans += get_comp(i);
-            vis[i] = true;
-        }
+
+void color(int u, int curr){
+    if(col[u] != -1 and col[u] !=curr){
+        bipart = false;
+        return;
     }
-    return ans;
+    col[u] = curr;
+    if(vis[u])
+        return;
+    vis[u] = true;
+    for(auto i:adj[u]){
+        color(i,curr xor 1);
+    }
 }
 
+
 int main(){
+    bipart = true;
     int n,m;
     cin>>n>>m;
     adj = vvi(n);
     vis = vector<bool>(n,0);
+    col=vi(n,-1);
     rep(i,0,m){
         int u,v;
         cin>>u>>v;
@@ -44,22 +50,14 @@ int main(){
     }
     rep(i,0,n){
         if(!vis[i]){
-            components.push_back(get_comp(i));
+            color(i,0);
         }
     }
-    for(auto i: components){
-        cout<<i<<" ";
+    if(bipart){
+        cout<<"Graph is biparted"<<endl;
+    }else{
+        cout<<"Graph is not biparted"<<endl;
     }
-    cout<<endl;
-
-
-    // choose two friends from different groups code
-    long long ans = 0;
-    for(auto i: components){
-        ans += i*(n-i);
-    }
-    cout<<(ans/2);
-    
 
     return 0;
 }
