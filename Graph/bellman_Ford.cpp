@@ -16,10 +16,13 @@ int main(){
     dist[src] = 0;
 
     for(int itr=0;itr<n-1;itr++){
+        bool change = false;
         for(auto e: edges){
             int u = e[0];
             int v = e[1];
             int w = e[2];
+            if(dist[v] > w+ dist[u])
+                change = true;
             dist[v] = min(dist[v], w+ dist[u]);
         }
     }
